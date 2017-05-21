@@ -1,5 +1,5 @@
 ﻿using ArmManager_WPF.src;
-using ArmManager_WPF.src.ConsoleHandler;
+using ArmManager_WPF.src.CustomConsole;
 using System.Windows;
 
 namespace ArmManager_WPF

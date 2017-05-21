@@ -1,4 +1,5 @@
-﻿using Leap;
+﻿using ArmManager_WPF.src.CustomConsole;
+using Leap;
 using System;
 using System.Windows.Media;
 
@@ -8,29 +9,28 @@ namespace ArmManager_WPF.src.LeapListeners
     {
         private MainWindow window;
         private BrushConverter bc = new BrushConverter();
+        private ConsoleHandler console;
 
-        public MainLeapListener(MainWindow window)
+        public MainLeapListener(MainWindow window, ConsoleHandler con)
         {
             this.window = window;
+            this.console = con;
         }
 
         public void OnServiceConnect(object sender, ConnectionEventArgs args)
         {
-            Console.WriteLine("Service connected");
+            this.console.writeLeapConsole("Service connected");
         }
 
         public void OnConnect(object sender, DeviceEventArgs args)
         {
-            Console.WriteLine("Connected");
+            this.console.writeLeapConsole("Connected");
         }
 
         public void OnFrame(object sender, FrameEventArgs args)
         {
             Leap.Frame frame = args.frame;
-            Console.WriteLine(
-                "Frame id: {0}, timestamp: {1}, hands: {2}",
-                frame.Id, frame.Timestamp, frame.Hands.Count
-                );
+            this.console.writeLeapConsole("Frame id: " + frame.Id + ", timestamp: " + frame.Timestamp + ", hands: " + frame.Hands.Count);
 
             this.window.detected_hands.Content = Convert.ToString(frame.Hands.Count);
             if (frame.Hands.Count == 0)
@@ -43,15 +43,12 @@ namespace ArmManager_WPF.src.LeapListeners
 
             foreach (Hand hand in frame.Hands)
             {
-                Console.WriteLine("Hand id: {0}, palm position: {1}, fingers: {2}",
-                    hand.Id, hand.PalmPosition, hand.Fingers.Count);
-                
+                this.console.writeLeapConsole("Hand id: "+ hand.Id + ", palm position: " + hand.PalmPosition + ", fingers: " + hand.Fingers.Count);
+
                 Leap.Vector normalHandVector = hand.PalmNormal;
                 Leap.Vector direction = hand.Direction;
-
-                Console.WriteLine(
-                    "Hand pitch:: {0} degrees, roll: {1} degrees, yaw: {2} degrees",
-                    direction.Pitch * 180.0f / (float)Math.PI, normalHandVector.Roll * 180.0f / (float)Math.PI, direction.Yaw * 180.0f / (float)Math.PI);
+                
+                this.console.writeLeapConsole("Hand pitch:: " + direction.Pitch * 180.0f / (float)Math.PI + " degrees, roll: " + normalHandVector.Roll * 180.0f / (float)Math.PI + " degrees, yaw: "+ direction.Yaw * 180.0f / (float)Math.PI + " degrees");
 
                 if (hand.IsRight)
                 {
