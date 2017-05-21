@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ArmManager_WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="720" Width="1080">
+        Title="ArmManager" Height="720" Width="1080" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid Margin="0,0,0,0">
             <Grid.RowDefinitions>
