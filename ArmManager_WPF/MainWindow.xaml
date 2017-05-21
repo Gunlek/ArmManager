@@ -1,0 +1,106 @@
+﻿<Window x:Class="ArmManager_WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ArmManager_WPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="720" Width="1080">
+    <Grid>
+        <Grid Margin="0,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="25"/>
+            </Grid.RowDefinitions>
+
+            <!-- Menu bar -->
+            <DockPanel Margin="0,0,0,0" VerticalAlignment="Top" Grid.Row="0" Height="Auto">
+                <Menu DockPanel.Dock="Top" VerticalAlignment="Top" VerticalContentAlignment="Top" Height="25">
+                    <MenuItem Header="_File" Height="25">
+                        <MenuItem Header="_New"/>
+                    </MenuItem>
+                </Menu>
+            </DockPanel>
+
+            <!-- Leap Panel -->
+            <StackPanel HorizontalAlignment="Left" Grid.Row="1" Width="213" Height="349" VerticalAlignment="Top" Grid.RowSpan="2">
+                <Grid Height="26">
+                    <Label x:Name="label1" Content="Axes Leap Motion" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="223" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                </Grid>
+                <Grid Height="264" RenderTransformOrigin="0.433,0.493">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" HorizontalAlignment="Center" Width="112">
+                        <Label x:Name="label" Content="Main(s) détéctée(s)" Height="30"/>
+                        <Label x:Name="label_Copy1" Content="Etat" Height="30"/>
+                        <Label x:Name="label_Copy" Content="Pitch Main droite" Height="30"/>
+                        <Label x:Name="label2" Content="Roll Main droite" Height="30"/>
+                        <Label x:Name="label3" Content="Yaw Main droite" Height="30"/>
+                        <Label x:Name="label3_Copy" Content="Pitch Main gauche" Height="30"/>
+                        <Label x:Name="label3_Copy1" Content="Roll Main gauche" Height="30"/>
+                        <Label x:Name="label3_Copy2" Content="Yaw Main gauche" Height="30"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Margin="0,0,-1,0">
+                        <Label x:Name="detected_hands" Content="0" Height="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                        <Label x:Name="hand_state" Content="" Background="#FFC0392B" Height="30"/>
+                        <TextBox x:Name="right_hand_pitch" Height="30" TextWrapping="Wrap" Text="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                        <TextBox x:Name="right_hand_roll" Height="30" TextWrapping="Wrap" Text="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                        <TextBox x:Name="right_hand_yaw" Height="30" TextWrapping="Wrap" Text="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                        <TextBox x:Name="left_hand_pitch" Height="30" TextWrapping="Wrap" Text="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                        <TextBox x:Name="left_hand_roll" Height="30" TextWrapping="Wrap" Text="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                        <TextBox x:Name="left_hand_yaw" Height="30" TextWrapping="Wrap" Text="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+
+            <!-- Resizer -->
+            <GridSplitter Grid.Row="2" Height="5" HorizontalAlignment="Stretch"></GridSplitter>
+
+            <!-- Console -->
+            <Grid Grid.Row="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <TabControl x:Name="Bottom_tabs" Grid.Row="0">
+                    <TabItem Header="Console">
+                        <Grid Background="#FFE5E5E5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="30"/>
+                            </Grid.RowDefinitions>
+                            <ScrollViewer Grid.Row="0">
+                                <TextBlock x:Name="console_text" TextWrapping="Wrap"/>
+                            </ScrollViewer>
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="7*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBox Grid.Column="0"/>
+                                <Button Grid.Column="1" Content="Send"/>
+                            </Grid>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Other">
+                        <Grid Background="#FFE5E5E5"/>
+                    </TabItem>
+                </TabControl>
+            </Grid>
+
+            <!-- Bottom Part -->
+            <StatusBar Grid.Row="4">
+                <StatusBarItem HorizontalContentAlignment="Right" HorizontalAlignment="Left">
+                    <TextBlock Text="Arm Manager is ready"/>
+                </StatusBarItem>
+                <StatusBarItem HorizontalContentAlignment="Right" HorizontalAlignment="Right">
+                    <TextBlock Text="Made with love by SimpleDuino"/>
+                </StatusBarItem>
+            </StatusBar>
+        </Grid>
+    </Grid>
+</Window>
