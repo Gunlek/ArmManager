@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ArmManager_WPF"
         mc:Ignorable="d"
-        Title="ArmManager" Height="720" Width="1080" WindowStartupLocation="CenterScreen">
+        Title="ArmManager" Height="971" Width="1467" WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Grid>
         <Grid Margin="0,0,0,0">
             <Grid.RowDefinitions>
@@ -74,8 +74,9 @@
                     </Grid.ColumnDefinitions>
                     <Grid Grid.Column="2">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="Auto"/>
                             <RowDefinition Height="3*"/>
+                            <RowDefinition Height="0.75*"/>
                             <RowDefinition Height="30px"/>
                         </Grid.RowDefinitions>
                         <Grid Grid.Column="1">
@@ -87,9 +88,14 @@
                                 <Label Content="Arm" FontSize="40" HorizontalAlignment="Center"/>
                                 <Label Content="Control" FontSize="40" HorizontalAlignment="Center"/>
                             </StackPanel>
-                            <Button Grid.Column="1" Content="Arrêt" x:Name="EmergencyStop" FontSize="36"/>
+                            <!--<Button Grid.Column="1" Content="Arrêt" x:Name="EmergencyStop" FontSize="36" Height="{Binding RelativeSource={RelativeSource Self}, Path=ActualWidth}" Background="{x:Null}" BorderThickness="0"/>-->
+                            <Button x:Name="button" Grid.Column="1" Height="{Binding RelativeSource={RelativeSource Self}, Path=ActualWidth}" Background="{x:Null}" BorderBrush="{x:Null}">
+                                <StackPanel>
+                                    <Image Source="assets/EmergencyStop.png" Height="{Binding ActualHeight, ElementName=button, Mode=OneWay}" Width="{Binding ActualWidth, ElementName=button, Mode=OneWay}"/>
+                                </StackPanel>
+                            </Button>
                         </Grid>
-                        <Grid Grid.Row="1">
+                        <Grid x:Name="grid" Grid.Row="1">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"/>
                                 <ColumnDefinition Width="1*"/>
@@ -97,28 +103,49 @@
                                 <ColumnDefinition Width="1*"/>
                                 <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
-                            <StackPanel Grid.Column="0" HorizontalAlignment="Center">
+                            <StackPanel x:Name="stackPanel1" Grid.Column="0" HorizontalAlignment="Center">
                                 <Slider Orientation="Vertical" x:Name="axe_1_slider" Height="200" HorizontalAlignment="Center" Maximum="180" Margin="0,10" SmallChange="1" LargeChange="10"/>
-                                <TextBox x:Name="axe_1_value" Height="23" TextWrapping="Wrap" Text="{Binding ElementName=axe_1_slider, Path=Value, StringFormat={}{0:N0}°}" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="0"/>
+                                <TextBox x:Name="axe_1_value" Height="23" TextWrapping="Wrap" Text="{Binding ElementName=axe_1_slider, Path=Value, StringFormat={}{0:N0}}" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="0"/>
+                                <Label Content="Axe 1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                             </StackPanel>
                             <StackPanel Grid.Column="1">
                                 <Slider Orientation="Vertical" x:Name="axe_2_slider" Height="200"  HorizontalAlignment="Center" Maximum="180" Margin="0,10" SmallChange="1" LargeChange="10"/>
-                                <TextBox x:Name="axe_2_value" Height="23" TextWrapping="Wrap" Text="{Binding ElementName=axe_2_slider, Path=Value, StringFormat={}{0:N0}°}" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="0"/>
+                                <TextBox x:Name="axe_2_value" Height="23" TextWrapping="Wrap" Text="{Binding ElementName=axe_2_slider, Path=Value, StringFormat={}{0:N0}}" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="0"/>
+                                <Label Content="Axe 2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                             </StackPanel>
                             <StackPanel Grid.Column="2">
                                 <Slider Orientation="Vertical" x:Name="axe_3_slider" Height="200"  HorizontalAlignment="Center" Maximum="180" Margin="0,10" SmallChange="1" LargeChange="10"/>
-                                <TextBox x:Name="axe_3_value" Height="23" TextWrapping="Wrap" Text="{Binding ElementName=axe_3_slider, Path=Value, StringFormat={}{0:N0}°}" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="0"/>
+                                <TextBox x:Name="axe_3_value" Height="23" TextWrapping="Wrap" Text="{Binding ElementName=axe_3_slider, Path=Value, StringFormat={}{0:N0}}" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="0"/>
+                                <Label Content="Axe 3" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                             </StackPanel>
                             <StackPanel Grid.Column="3">
                                 <Slider Orientation="Vertical" x:Name="axe_4_slider" Height="200"  HorizontalAlignment="Center" Maximum="180" Margin="0,10" SmallChange="1" LargeChange="10"/>
-                                <TextBox x:Name="axe_4_value" Height="23" TextWrapping="Wrap" Text="{Binding ElementName=axe_4_slider, Path=Value, StringFormat={}{0:N0}°}" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="0"/>
+                                <TextBox x:Name="axe_4_value" Height="23" TextWrapping="Wrap" Text="{Binding ElementName=axe_4_slider, Path=Value, StringFormat={}{0:N0}}" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="0"/>
+                                <Label Content="Axe 4" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                             </StackPanel>
-                            <StackPanel Grid.Column="4">
+                            <StackPanel x:Name="stackPanel" Grid.Column="4">
                                 <Slider Orientation="Vertical" x:Name="axe_5_slider" Height="200"  HorizontalAlignment="Center" Margin="0,10" Maximum="180" SmallChange="1" LargeChange="10"/>
-                                <TextBox x:Name="axe_5_value" Height="23" TextWrapping="Wrap" Text="{Binding ElementName=axe_5_slider, Path=Value, StringFormat={}{0:N0}°}" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="0"/>
+                                <TextBox x:Name="axe_5_value" Height="23" TextWrapping="Wrap" Text="{Binding ElementName=axe_5_slider, Path=Value, StringFormat={}{0:N0}}" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="0"/>
+                                <Label Content="Axe 5" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                             </StackPanel>
                         </Grid>
-                        <Grid Grid.Row="2">
+                        <Grid Grid.Row="2" HorizontalAlignment="Center">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                                <Slider Orientation="Horizontal" Width="200" x:Name="rotation_pince_slider" Maximum="180" Minimum="0" SmallChange="1" LargeChange="10" VerticalAlignment="Center"/>
+                                <TextBox x:Name="rotation_pince_value" TextWrapping="Wrap" Text="{Binding ElementName=rotation_pince_slider, Path=Value, StringFormat={}{0:N0}}" BorderThickness="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <Label Content="Rotation pince" VerticalAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="1" Orientation="Horizontal">
+                                <Slider Orientation="Horizontal" Width="200" x:Name="fermeture_pince_slider" Maximum="180" Minimum="0" SmallChange="1" LargeChange="10" VerticalAlignment="Center"/>
+                                <TextBox x:Name="fermeture_pince_value" TextWrapping="Wrap" Text="{Binding ElementName=fermeture_pince_slider, Path=Value, StringFormat={}{0:N0}}" BorderThickness="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <Label Content="Fermeture pince" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Grid>
+                        <Grid Grid.Row="3">
                             <Label Content="Valeur de consigne à titre indicatif" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15px"/>
                         </Grid>
                     </Grid>
