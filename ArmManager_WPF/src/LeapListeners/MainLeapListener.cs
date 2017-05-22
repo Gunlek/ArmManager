@@ -30,7 +30,7 @@ namespace ArmManager_WPF.src.LeapListeners
         public void OnFrame(object sender, FrameEventArgs args)
         {
             Leap.Frame frame = args.frame;
-            this.console.writeLeapConsole("Frame id: " + frame.Id + ", timestamp: " + frame.Timestamp + ", hands: " + frame.Hands.Count);
+            //this.console.writeLeapConsole("Frame id: " + frame.Id + ", timestamp: " + frame.Timestamp + ", hands: " + frame.Hands.Count);
 
             this.window.detected_hands.Content = Convert.ToString(frame.Hands.Count);
             if (frame.Hands.Count == 0)
@@ -43,12 +43,12 @@ namespace ArmManager_WPF.src.LeapListeners
 
             foreach (Hand hand in frame.Hands)
             {
-                this.console.writeLeapConsole("Hand id: "+ hand.Id + ", palm position: " + hand.PalmPosition + ", fingers: " + hand.Fingers.Count);
+                //this.console.writeLeapConsole("Hand id: "+ hand.Id + ", palm position: " + hand.PalmPosition + ", fingers: " + hand.Fingers.Count);
 
                 Leap.Vector normalHandVector = hand.PalmNormal;
                 Leap.Vector direction = hand.Direction;
                 
-                this.console.writeLeapConsole("Hand pitch:: " + direction.Pitch * 180.0f / (float)Math.PI + " degrees, roll: " + normalHandVector.Roll * 180.0f / (float)Math.PI + " degrees, yaw: "+ direction.Yaw * 180.0f / (float)Math.PI + " degrees");
+                //this.console.writeLeapConsole("Hand pitch:: " + direction.Pitch * 180.0f / (float)Math.PI + " degrees, roll: " + normalHandVector.Roll * 180.0f / (float)Math.PI + " degrees, yaw: "+ direction.Yaw * 180.0f / (float)Math.PI + " degrees");
 
                 if (hand.IsRight)
                 {

@@ -26,37 +26,104 @@
             </DockPanel>
 
             <!-- Leap Panel -->
-            <StackPanel HorizontalAlignment="Left" Grid.Row="1" Width="213" Height="349" VerticalAlignment="Top" Grid.RowSpan="2">
-                <Grid Height="26">
-                    <Label x:Name="label1" Content="Axes Leap Motion" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="223" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                </Grid>
-                <Grid Height="264" RenderTransformOrigin="0.433,0.493">
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel HorizontalAlignment="Left" Grid.Column="0" Width="213" Height="Auto" VerticalAlignment="Top">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Grid.Row="0" x:Name="label1" Content="Axes Leap Motion" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="223" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                        <Grid Grid.Row="1" Height="264" RenderTransformOrigin="0.433,0.493">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0" HorizontalAlignment="Center" Width="Auto">
+                                <Label x:Name="label" Content="Main(s) détéctée(s)" Height="30"/>
+                                <Label x:Name="label_Copy1" Content="Etat" Height="30"/>
+                                <Label x:Name="label_Copy" Content="Pitch Main droite" Height="30"/>
+                                <Label x:Name="label2" Content="Roll Main droite" Height="30"/>
+                                <Label x:Name="label3" Content="Yaw Main droite" Height="30"/>
+                                <Label x:Name="label3_Copy" Content="Pitch Main gauche" Height="30"/>
+                                <Label x:Name="label3_Copy1" Content="Roll Main gauche" Height="30"/>
+                                <Label x:Name="label3_Copy2" Content="Yaw Main gauche" Height="30"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1" Margin="0,0,-1,0">
+                                <Label x:Name="detected_hands" Content="0" Height="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                                <Label x:Name="hand_state" Content="" Background="#FFC0392B" Height="30"/>
+                                <TextBox x:Name="right_hand_pitch" Height="30" TextWrapping="Wrap" Text="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                                <TextBox x:Name="right_hand_roll" Height="30" TextWrapping="Wrap" Text="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                                <TextBox x:Name="right_hand_yaw" Height="30" TextWrapping="Wrap" Text="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                                <TextBox x:Name="left_hand_pitch" Height="30" TextWrapping="Wrap" Text="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                                <TextBox x:Name="left_hand_roll" Height="30" TextWrapping="Wrap" Text="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                                <TextBox x:Name="left_hand_yaw" Height="30" TextWrapping="Wrap" Text="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </StackPanel>
+                <Grid Grid.Column="1">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
-                    <StackPanel Grid.Column="0" HorizontalAlignment="Center" Width="112">
-                        <Label x:Name="label" Content="Main(s) détéctée(s)" Height="30"/>
-                        <Label x:Name="label_Copy1" Content="Etat" Height="30"/>
-                        <Label x:Name="label_Copy" Content="Pitch Main droite" Height="30"/>
-                        <Label x:Name="label2" Content="Roll Main droite" Height="30"/>
-                        <Label x:Name="label3" Content="Yaw Main droite" Height="30"/>
-                        <Label x:Name="label3_Copy" Content="Pitch Main gauche" Height="30"/>
-                        <Label x:Name="label3_Copy1" Content="Roll Main gauche" Height="30"/>
-                        <Label x:Name="label3_Copy2" Content="Yaw Main gauche" Height="30"/>
-                    </StackPanel>
-                    <StackPanel Grid.Column="1" Margin="0,0,-1,0">
-                        <Label x:Name="detected_hands" Content="0" Height="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                        <Label x:Name="hand_state" Content="" Background="#FFC0392B" Height="30"/>
-                        <TextBox x:Name="right_hand_pitch" Height="30" TextWrapping="Wrap" Text="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                        <TextBox x:Name="right_hand_roll" Height="30" TextWrapping="Wrap" Text="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                        <TextBox x:Name="right_hand_yaw" Height="30" TextWrapping="Wrap" Text="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                        <TextBox x:Name="left_hand_pitch" Height="30" TextWrapping="Wrap" Text="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                        <TextBox x:Name="left_hand_roll" Height="30" TextWrapping="Wrap" Text="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                        <TextBox x:Name="left_hand_yaw" Height="30" TextWrapping="Wrap" Text="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                    </StackPanel>
+                    <Grid Grid.Column="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="30px"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Column="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0" Height="Auto" VerticalAlignment="Center">
+                                <Label Content="Arm" FontSize="40" HorizontalAlignment="Center"/>
+                                <Label Content="Control" FontSize="40" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                            <Button Grid.Column="1" Content="Arrêt" x:Name="EmergencyStop" FontSize="36"/>
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0" HorizontalAlignment="Center">
+                                <Slider Orientation="Vertical" x:Name="axe_1_slider" Height="200" HorizontalAlignment="Center" Maximum="180" Margin="0,10" SmallChange="1" LargeChange="10"/>
+                                <TextBox x:Name="axe_1_value" Height="23" TextWrapping="Wrap" Text="{Binding ElementName=axe_1_slider, Path=Value, StringFormat={}{0:N0}°}" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="0"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1">
+                                <Slider Orientation="Vertical" x:Name="axe_2_slider" Height="200"  HorizontalAlignment="Center" Maximum="180" Margin="0,10" SmallChange="1" LargeChange="10"/>
+                                <TextBox x:Name="axe_2_value" Height="23" TextWrapping="Wrap" Text="{Binding ElementName=axe_2_slider, Path=Value, StringFormat={}{0:N0}°}" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="0"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="2">
+                                <Slider Orientation="Vertical" x:Name="axe_3_slider" Height="200"  HorizontalAlignment="Center" Maximum="180" Margin="0,10" SmallChange="1" LargeChange="10"/>
+                                <TextBox x:Name="axe_3_value" Height="23" TextWrapping="Wrap" Text="{Binding ElementName=axe_3_slider, Path=Value, StringFormat={}{0:N0}°}" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="0"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="3">
+                                <Slider Orientation="Vertical" x:Name="axe_4_slider" Height="200"  HorizontalAlignment="Center" Maximum="180" Margin="0,10" SmallChange="1" LargeChange="10"/>
+                                <TextBox x:Name="axe_4_value" Height="23" TextWrapping="Wrap" Text="{Binding ElementName=axe_4_slider, Path=Value, StringFormat={}{0:N0}°}" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="0"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="4">
+                                <Slider Orientation="Vertical" x:Name="axe_5_slider" Height="200"  HorizontalAlignment="Center" Margin="0,10" Maximum="180" SmallChange="1" LargeChange="10"/>
+                                <TextBox x:Name="axe_5_value" Height="23" TextWrapping="Wrap" Text="{Binding ElementName=axe_5_slider, Path=Value, StringFormat={}{0:N0}°}" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="0"/>
+                            </StackPanel>
+                        </Grid>
+                        <Grid Grid.Row="2">
+                            <Label Content="Valeur de consigne à titre indicatif" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15px"/>
+                        </Grid>
+                    </Grid>
                 </Grid>
-            </StackPanel>
+            </Grid>
 
             <!-- Resizer -->
             <GridSplitter Grid.Row="2" Height="5" HorizontalAlignment="Stretch"></GridSplitter>
